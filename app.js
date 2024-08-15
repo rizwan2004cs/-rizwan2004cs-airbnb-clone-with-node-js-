@@ -28,23 +28,9 @@ app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 
-app.listen(4900, () => {
-  console.log("server is running on port 3001");
+app.listen(process.env.PORT || 3000, () => {
+  console.log(`Server is running on port ${process.env.PORT || 3000}`);
 });
-
-// app.get("/testlisting",async (req,res)=>{
-//     let sampleListing = new Listing({
-//         title:"Raj fort",
-//         description:"This is a independent villa",
-//         image:"https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-//         price:5000,
-//         location:"Calicut",
-//         country:"India"
-//     });
-//     await sampleListing.save();
-//     res.send("listing saved");
-//     console.log(sampleListing);
-// })
 
 app.get("/", (req, res) => {
   res.send("Hi i'm root");
